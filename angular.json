@@ -21,9 +21,18 @@
             "polyfills": "apps/hub/src/polyfills.ts",
             "tsConfig": "apps/hub/tsconfig.app.json",
             "aot": true,
-            "assets": ["apps/hub/src/favicon.ico", "apps/hub/src/assets"],
-            "styles": ["apps/hub/src/styles.scss"],
-            "scripts": []
+            "assets": [
+              "apps/hub/src/favicon.ico",
+              "apps/hub/src/assets"
+            ],
+            "styles": [
+              "apps/hub/src/styles.scss",
+              "node_modules/@aposin/ng-aquila/css/normalize.css",
+              "node_modules/@aposin/ng-aquila/themes/expert.css"
+            ],
+            "scripts": [
+              "node_modules/what-input/dist/what-input.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -81,7 +90,10 @@
               "apps/hub/tsconfig.app.json",
               "apps/hub/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/hub/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/hub/**/*"
+            ]
           }
         },
         "test": {
@@ -114,8 +126,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/hub-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/hub-e2e/**/*"]
+            "tsConfig": [
+              "apps/hub-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/hub-e2e/**/*"
+            ]
           }
         }
       }
@@ -133,7 +150,9 @@
             "outputPath": "dist/apps/api",
             "main": "apps/api/src/main.ts",
             "tsConfig": "apps/api/tsconfig.app.json",
-            "assets": ["apps/api/src/assets"]
+            "assets": [
+              "apps/api/src/assets"
+            ]
           },
           "configurations": {
             "production": {
@@ -162,7 +181,10 @@
               "apps/api/tsconfig.app.json",
               "apps/api/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/api/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/api/**/*"
+            ]
           }
         },
         "test": {
@@ -187,7 +209,10 @@
               "libs/api-interfaces/tsconfig.lib.json",
               "libs/api-interfaces/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/api-interfaces/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/api-interfaces/**/*"
+            ]
           }
         },
         "test": {
