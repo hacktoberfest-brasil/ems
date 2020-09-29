@@ -1,0 +1,44 @@
+<ng-container *ngIf="timeline$ | async as timeline">
+  <h1></h1>
+
+  <header nx-header>
+    <nx-header-row>
+      <nx-header-brand>
+        <nx-header-app-title>{{ timeline.date | date }}</nx-header-app-title>
+      </nx-header-brand>
+
+      <nx-header-actions showSeparator class="cobranding">
+        <span>{{ timeline.shownSessions }}</span>
+      </nx-header-actions>
+    </nx-header-row>
+  </header>
+
+  <ng-container *ngFor="let item of timeline.groups">
+    <header nx-header>
+      <nx-header-row>
+        <h3>{{ item.time }}</h3>
+      </nx-header-row>
+    </header>
+
+    <nx-card *ngFor="let session of item.sessions">
+      <nx-card-header>
+        <h3 nxHeadline="subsection-small" class="nx-margin-bottom-0">
+          {{ session.timeStart }}
+          {{ session.timeEnd }}
+        </h3>
+        <hr />
+      </nx-card-header>
+      <p nxCopytext="normal">
+        {{ session.description }}
+      </p>
+      <nx-card-footer>
+        <nx-link>
+          <a routerLink="#">
+            <nx-icon name="arrow-right"></nx-icon>
+            Find out more
+          </a>
+        </nx-link>
+      </nx-card-footer>
+    </nx-card>
+  </ng-container>
+</ng-container>

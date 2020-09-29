@@ -1,6 +1,14 @@
-/*
+  /*
  * Remove template code below
  */
 :host {
   display: flex;
+  height: 100%;
+
+  aside {
+    padding: 0 0.5rem 0 0;
+  }
+  main {
+    padding: 0 0 0 0.5rem;
+  }
 }

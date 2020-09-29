@@ -10,7 +10,7 @@
       },
       "root": "apps/hub",
       "sourceRoot": "apps/hub/src",
-      "prefix": "ems",
+      "prefix": "emx",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -21,20 +21,28 @@
             "polyfills": "apps/hub/src/polyfills.ts",
             "tsConfig": "apps/hub/tsconfig.app.json",
             "aot": true,
-            "assets": [
-              "apps/hub/src/favicon.ico",
-              "apps/hub/src/assets"
-            ],
+            "assets": ["apps/hub/src/favicon.ico", "apps/hub/src/assets"],
             "styles": [
               "apps/hub/src/styles.scss",
               "node_modules/@aposin/ng-aquila/css/normalize.css",
               "node_modules/@aposin/ng-aquila/themes/expert.css"
             ],
-            "scripts": [
-              "node_modules/what-input/dist/what-input.js"
-            ]
+            "scripts": ["node_modules/what-input/dist/what-input.js"]
           },
           "configurations": {
+            "mocks": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/hub/src/environments/environment.ts",
+                  "with": "apps/hub/src/environments/environment.mocks.ts"
+                }
+              ],
+              "assets": [
+                "apps/hub/src/favicon.ico",
+                "apps/hub/src/assets",
+                "apps/hub/src/mocks"
+              ]
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -74,6 +82,9 @@
           "configurations": {
             "production": {
               "browserTarget": "hub:build:production"
+            },
+            "mocks": {
+              "browserTarget": "hub:build:mocks"
             }
           }
         },
@@ -90,10 +101,7 @@
               "apps/hub/tsconfig.app.json",
               "apps/hub/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/hub/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/hub/**/*"]
           }
         },
         "test": {
@@ -126,13 +134,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/hub-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/hub-e2e/**/*"
-            ]
+            "tsConfig": ["apps/hub-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/hub-e2e/**/*"]
           }
         }
       }
@@ -150,9 +153,7 @@
             "outputPath": "dist/apps/api",
             "main": "apps/api/src/main.ts",
             "tsConfig": "apps/api/tsconfig.app.json",
-            "assets": [
-              "apps/api/src/assets"
-            ]
+            "assets": ["apps/api/src/assets"]
           },
           "configurations": {
             "production": {
@@ -181,10 +182,7 @@
               "apps/api/tsconfig.app.json",
               "apps/api/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/api/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/api/**/*"]
           }
         },
         "test": {
@@ -209,10 +207,7 @@
               "libs/api-interfaces/tsconfig.lib.json",
               "libs/api-interfaces/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/api-interfaces/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/api-interfaces/**/*"]
           }
         },
         "test": {
@@ -221,6 +216,125 @@
             "jestConfig": "libs/api-interfaces/jest.config.js",
             "passWithNoTests": true
           }
+        }
+      }
+    },
+    "app-schedule": {
+      "projectType": "library",
+      "root": "libs/app/schedule",
+      "sourceRoot": "libs/app/schedule/src",
+      "prefix": "emx",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/app/schedule/tsconfig.lib.json",
+            "project": "libs/app/schedule/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/app/schedule/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/app/schedule/tsconfig.lib.json",
+              "libs/app/schedule/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/app/schedule/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/app/schedule/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "core-entities": {
+      "root": "libs/core/entities",
+      "sourceRoot": "libs/core/entities/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/core/entities/tsconfig.lib.json",
+              "libs/core/entities/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/core/entities/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/core/entities/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/core/entities",
+            "tsConfig": "libs/core/entities/tsconfig.lib.json",
+            "packageJson": "libs/core/entities/package.json",
+            "main": "libs/core/entities/src/index.ts",
+            "assets": ["libs/core/entities/*.md"]
+          }
+        }
+      }
+    },
+    "common-forms": {
+      "projectType": "library",
+      "root": "libs/common/forms",
+      "sourceRoot": "libs/common/forms/src",
+      "prefix": "emx",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/common/forms/tsconfig.lib.json",
+            "project": "libs/common/forms/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/common/forms/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/forms/tsconfig.lib.json",
+              "libs/common/forms/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/common/forms/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/forms/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
         }
       }
     }

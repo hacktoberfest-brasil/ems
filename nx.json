@@ -1,5 +1,5 @@
 {
-  "npmScope": "ems",
+  "npmScope": "emx",
   "affected": {
     "defaultBase": "master"
   },
@@ -34,6 +34,15 @@
     },
     "api-interfaces": {
       "tags": []
+    },
+    "app-schedule": {
+      "tags": []
+    },
+    "core-entities": {
+      "tags": []
+    },
+    "common-forms": {
+      "tags": ["type:ui"]
     }
   }
 }

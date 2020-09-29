@@ -1,0 +1,13 @@
+<nx-formfield>
+  <input
+    nxInput
+    [(ngModel)]="searchTerm1"
+    type="search"
+  >
+  <span nxFormfieldPrefix>
+    <nx-icon name="play" size="s"></nx-icon>
+  </span>
+  <span nxFormfieldSuffix *ngIf="searchTerm1" aria-hidden="true" (click)="searchTerm1=''">
+    <nx-icon name="close" size="s"></nx-icon>
+  </span>
+</nx-formfield>

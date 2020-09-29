@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 
-import { Message } from '@ems/api-interfaces';
+import { Message } from '@emx/api-interfaces';
 
 import { AppService } from './app.service';
 

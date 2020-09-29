@@ -16,7 +16,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ems/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@emx/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@emx/app-schedule": ["libs/app/schedule/src/index.ts"],
+      "@emx/core/entities": ["libs/core/entities/src/index.ts"],
+      "@emx/components": ["libs/shared/components/src/index.ts"],
+      "@emx/forms": ["libs/common/forms/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

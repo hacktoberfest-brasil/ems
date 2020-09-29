@@ -1,5 +1,5 @@
 {
-  "name": "ems",
+  "name": "emx",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -42,6 +42,7 @@
     "@nestjs/common": "^7.0.0",
     "@nestjs/core": "^7.0.0",
     "@nestjs/platform-express": "^7.0.0",
+    "@ngrx/component-store": "^10.0.0",
     "@nrwl/angular": "10.2.1",
     "css-vars-ponyfill": "^2.1.2",
     "iban": "^0.0.12",
@@ -49,11 +50,13 @@
     "object-fit-images": "^3.2.3",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.5.5",
+    "tslib": "^2.0.0",
     "what-input": "^5.1.2",
     "zone.js": "^0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1000.0",
+    "@angular-devkit/build-ng-packagr": "~0.1000.8",
     "@angular/cli": "~10.0.0",
     "@angular/compiler-cli": "^10.0.0",
     "@angular/language-service": "^10.0.0",
@@ -68,10 +71,13 @@
     "@types/node": "~8.9.4",
     "codelyzer": "~5.0.1",
     "cypress": "^4.1.0",
+    "dgeni": "^0.4.12",
+    "dgeni-packages": "^0.28.4",
     "dotenv": "6.2.0",
     "eslint": "6.8.0",
     "jest": "26.2.2",
     "jest-preset-angular": "8.3.1",
+    "ng-packagr": "^10.0.0",
     "prettier": "2.0.4",
     "ts-jest": "26.1.4",
     "ts-node": "~7.0.0",
