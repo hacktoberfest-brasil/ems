@@ -96,6 +96,7 @@ export class EmxCheckboxComponent extends EmxCheckbox
   onChangeEvent(evt: EventInputTarget) {
     this.onChange(evt.target.value);
     this.checkedChange.emit(evt.target.checked);
+    this.valueChange.emit(this.control.value);
   }
 
   ngOnDestroy() {
