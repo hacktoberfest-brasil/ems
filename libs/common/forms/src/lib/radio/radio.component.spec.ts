@@ -1,25 +1,14 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Spectator, createComponentFactory } from '@ngneat/spectator';
 
 import { EmxRadioComponent } from './radio.component';
 
-describe('EmxRadioComponent', () => {
-  let component: EmxRadioComponent;
-  let fixture: ComponentFixture<EmxRadioComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ EmxRadioComponent ]
-    })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(EmxRadioComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+describe('SpecComponent', () => {
+  let spectator: Spectator<EmxRadioComponent>;
+  const createComponent = createComponentFactory(EmxRadioComponent);
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    spectator = createComponent();
+
+    expect(spectator.component).toBeTruthy();
   });
 });

@@ -1,33 +1,21 @@
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Spectator, createComponentFactory } from '@ngneat/spectator';
 
 import { EmxCheckbox, EmxCheckboxComponent } from './checkbox.component';
 
-describe('EmxCheckboxComponent', () => {
-  let component: EmxCheckboxComponent;
-  let fixture: ComponentFixture<EmxCheckboxComponent>;
-
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      imports: [ ReactiveFormsModule ],
-      declarations: [ EmxCheckboxComponent ],
-      providers: [
-        {
-          provide: EmxCheckbox,
-          useValue: jest.fn()
-        }
-      ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(EmxCheckboxComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+describe('SpecComponent', () => {
+  let spectator: Spectator<EmxCheckboxComponent>;
+  const createComponent = createComponentFactory({
+    component: EmxCheckboxComponent,
+    imports: [
+      FormsModule,
+      ReactiveFormsModule,
+    ]
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    spectator = createComponent();
+
+    expect(spectator.component).toBeTruthy();
   });
 });

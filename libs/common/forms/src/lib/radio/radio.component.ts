@@ -91,12 +91,12 @@ export class EmxRadioComponent extends EmxRadio
   }
 
   ngAfterContentInit() {
-    this.control = this.ngControl.control
+    this.control = this.ngControl?.control
       ? this.ngControl.control
       : new FormControl();
   }
   ngAfterViewInit() {
-    this.ngControl.control.valueChanges
+    this.ngControl?.control?.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe((value) => this.valueChange.emit(value));
     this._radios.map((item) => this.onChangeOption(item));
