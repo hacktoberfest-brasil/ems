@@ -2,7 +2,7 @@ import { Spectator, createComponentFactory } from '@ngneat/spectator';
 
 import { EmxRadioOptionComponent } from './radio-option.component';
 
-describe('SpecComponent', () => {
+describe('EmxRadionOptionComponent', () => {
   let spectator: Spectator<EmxRadioOptionComponent>;
   const createComponent = createComponentFactory(EmxRadioOptionComponent);
 

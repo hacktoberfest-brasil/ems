@@ -98,4 +98,9 @@ export class AppComponent {
   onCheckboxChange(data?) {
     console.log('data: ', data);
   }
+
+  onSubmit() {
+    console.log(this.example.value);
+
+  }
 }

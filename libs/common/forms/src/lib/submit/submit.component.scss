@@ -1,0 +1,46 @@
+:host {
+  --emx-button-width: 300px;
+  --emx-button-height: 120px;
+  --emx-button-font-size: 32px;
+
+  &,
+  button {
+    width: var(--emx-button-width);
+    height: var(--emx-button-height);
+    border: none;
+    color: #ffffff50;
+    background-color: #93c2db25;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+    line-height: var(--emx-button-height);
+    font-size: var(--emx-button-font-size);
+    font-weight: bold;
+    transition: color 400ms ease-in-out, background-color 600ms ease 400ms;
+  }
+
+  & svg,
+  button svg {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: calc(var(--emx-button-width) + 20px);
+    height: calc(var(--emx-button-height) + 20px);
+    fill: none;
+    stroke: #fff;
+    stroke-linecap: round;
+    stroke-dasharray: 840;
+    stroke-dashoffset: 840;
+    stroke-width: 5;
+    transition: 600ms stroke-dashoffset ease;
+  }
+
+  &:hover,
+  button:hover {
+    color: rgba(255, 138, 226, 1);
+    background-color: #93c2db50;
+    svg {
+      stroke-dashoffset: 0;
+    }
+  }
+}

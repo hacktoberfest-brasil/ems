@@ -35,7 +35,7 @@ class CustomFormComponent {
   choices = OPTIONS;
 }
 
-describe('RadioComponent', () => {
+describe('EmxRadioComponent', () => {
   describe('Host', () => {
     let spectator: SpectatorHost<EmxRadioComponent, CustomFormComponent>;
     const createHost = createHostFactory({

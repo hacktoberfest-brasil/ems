@@ -20,7 +20,7 @@ class CustomFormComponent {
   form = new FormControl();
 }
 
-describe('CheckboxComponent', () => {
+describe('EmxCheckboxComponent', () => {
   describe('Host', () => {
     let spectator: SpectatorHost<EmxCheckboxComponent, CustomFormComponent>;
     const createHost = createHostFactory({

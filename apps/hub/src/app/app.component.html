@@ -34,7 +34,7 @@
   <section>
     <!-- <emx-forms></emx-forms> -->
 
-    <form [formGroup]="example">
+    <form [formGroup]="example" (ngSubmit)="onSubmit()">
       <div formArrayName="langs">
         <ng-container *ngFor="let lang of langs; index as i">
           <emx-checkbox [formControlName]="i" [value]="lang">
@@ -48,6 +48,9 @@
           {{ c.v }}
         </emx-radio-option>
       </emx-radio>
+
+      <button emx-submit>Enviar</button>
+      <emx-submit>Enviar</emx-submit>
     </form>
 
     <pre>value: {{ example.value | json }}</pre>

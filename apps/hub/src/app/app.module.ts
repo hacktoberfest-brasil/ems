@@ -10,7 +10,7 @@ import { NxSidebarModule } from '@aposin/ng-aquila/sidebar';
 import { NxBreadcrumbModule } from '@aposin/ng-aquila/breadcrumb';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 
-import { EmxCheckboxModule, EmxRadioModule } from '@emx/forms';
+import { EmxCheckboxModule, EmxRadioModule, EmxSubmitModule } from '@emx/forms';
 
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -50,7 +50,8 @@ const mocksProvider = {
     NxBreadcrumbModule,
     NxIconModule,
     EmxCheckboxModule,
-    EmxRadioModule
+    EmxRadioModule,
+    EmxSubmitModule
   ],
   providers: [MocksInterceptor, environment.mocks ? mocksProvider : []],
   bootstrap: [AppComponent],
