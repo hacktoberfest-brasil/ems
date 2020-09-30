@@ -13,6 +13,8 @@ import {
   AfterViewInit,
   AfterContentInit,
   ChangeDetectionStrategy,
+  ContentChildren,
+  QueryList,
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -24,11 +26,12 @@ import {
   NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 import { EmxControlAccessor } from '../abstractions';
+import { EmxRadioOptionComponent } from './radio-option';
 
 let nextId = 0;
 
 @Injectable()
-export class EmxCheckbox extends EmxControlAccessor {
+export class EmxRadio extends EmxControlAccessor {
   @Input()
   public set disabled(value: boolean) {
     this._disabled = value;
@@ -39,22 +42,27 @@ export class EmxCheckbox extends EmxControlAccessor {
   }
 }
 
-const EmxCheckboxProvider = {
+const EmxRadioProvider = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => EmxCheckbox),
+  useExisting: forwardRef(() => EmxRadio),
   multi: true,
 };
 
 @Component({
-  selector: 'emx-checkbox',
-  templateUrl: './checkbox.component.html',
-  styleUrls: ['./checkbox.component.scss'],
+  selector: 'emx-radio',
+  templateUrl: './radio.component.html',
+  styleUrls: ['./radio.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [EmxCheckbox, EmxCheckboxProvider],
+  providers: [EmxRadio, EmxRadioProvider],
 })
-export class EmxCheckboxComponent extends EmxCheckbox
+export class EmxRadioComponent extends EmxRadio
   implements AfterContentInit, AfterViewInit, OnDestroy {
   destroy$ = new Subject<void>();
+
+  @ContentChildren(forwardRef(() => EmxRadioOptionComponent), {
+    descendants: true,
+  })
+  _radios: QueryList<EmxRadioOptionComponent>;
 
   @ViewChild('input', { static: true }) _el: ElementRef<HTMLInputElement>;
   get el() {
@@ -68,7 +76,7 @@ export class EmxCheckboxComponent extends EmxCheckbox
   public get id(): string {
     return this._id;
   }
-  private _id = `emx-checkbox-${nextId++}`;
+  private _id = `emx-radio-${nextId++}`;
 
   @Output()
   valueChange: EventEmitter<any> = new EventEmitter<any>();
@@ -91,8 +99,18 @@ export class EmxCheckboxComponent extends EmxCheckbox
     this.ngControl.control.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe((value) => this.valueChange.emit(value));
+    this._radios.map((item) => this.onChangeOption(item));
   }
-
+  onChangeOption(option: EmxRadioOptionComponent) {
+    option.name = this.id;
+    option.checkedChange
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(({ value, el }) => {
+        this.control.setValue(value);
+        this.checkedChange.emit(el.checked);
+        this.valueChange.emit(value);
+      });
+  }
   onChangeEvent(evt: EventInputTarget) {
     this.onChange(evt.target.value);
     this.checkedChange.emit(evt.target.checked);

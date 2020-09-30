@@ -1,14 +1,14 @@
 <div class="emx-checkbox">
   <input
+    #input
     [id]="id"
-    class="cdk-visually-hidden"
     name="checks"
     type="checkbox"
-    #input
+    class="cdk-visually-hidden"
     [value]="value ? value : false"
-    [checked]="vm?.checked"
-    [attr.aria-checked]="vm?.checked"
-    [formControl]="ngControl?.control"
+    [checked]="el?.checked"
+    [attr.aria-checked]="el?.checked"
+    [formControl]="control"
     (change)="onChangeEvent($event)"
   />
   <label [attr.for]="id">

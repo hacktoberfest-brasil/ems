@@ -1,7 +1,7 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { EmxCheckboxComponent } from './checkbox.component';
+import { EmxCheckbox, EmxCheckboxComponent } from './checkbox.component';
 
 describe('EmxCheckboxComponent', () => {
   let component: EmxCheckboxComponent;
@@ -10,7 +10,13 @@ describe('EmxCheckboxComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [ ReactiveFormsModule ],
-      declarations: [ EmxCheckboxComponent ]
+      declarations: [ EmxCheckboxComponent ],
+      providers: [
+        {
+          provide: EmxCheckbox,
+          useValue: jest.fn()
+        }
+      ]
     })
     .compileComponents();
   }));

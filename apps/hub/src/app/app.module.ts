@@ -1,4 +1,3 @@
-import { FormsModule } from './forms/forms.module';
 import { MocksInterceptor } from './mocks.interceptor';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -10,6 +9,8 @@ import { NxActionModule } from '@aposin/ng-aquila/action';
 import { NxSidebarModule } from '@aposin/ng-aquila/sidebar';
 import { NxBreadcrumbModule } from '@aposin/ng-aquila/breadcrumb';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
+
+import { EmxCheckboxModule, EmxRadioModule } from '@emx/forms';
 
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -48,6 +49,8 @@ const mocksProvider = {
     NxSidebarModule,
     NxBreadcrumbModule,
     NxIconModule,
+    EmxCheckboxModule,
+    EmxRadioModule
   ],
   providers: [MocksInterceptor, environment.mocks ? mocksProvider : []],
   bootstrap: [AppComponent],

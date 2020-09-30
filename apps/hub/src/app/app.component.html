@@ -7,7 +7,6 @@
       [queryParams]="action.query"
       routerLinkActive="is-selected"
       type="button"
-
     >
       <nx-icon nxActionIcon [name]="action.icon"></nx-icon>
       {{ action.label }}
@@ -26,7 +25,7 @@
     <ol nxBreadcrumb>
       <li *ngFor="let item of dynamicCumbs; let i = index">
         <a nxBreadcrumbItem (click)="goToItem(i)" [routerLink]="item.link">
-          {{item.name}}
+          {{ item.name }}
         </a>
       </li>
     </ol>
@@ -35,12 +34,24 @@
   <section>
     <!-- <emx-forms></emx-forms> -->
 
-    <emx-checkbox [formControl]="form" (checkedChange)="onCheckboxChange($event)">
-      Another checkbox
-    </emx-checkbox>
+    <form [formGroup]="example">
+      <div formArrayName="langs">
+        <ng-container *ngFor="let lang of langs; index as i">
+          <emx-checkbox [formControlName]="i" [value]="lang">
+            {{ lang }}
+          </emx-checkbox>
+        </ng-container>
+      </div>
 
-    <pre>value: {{ form.value | json }}</pre>
+      <emx-radio formControlName="radio">
+        <emx-radio-option *ngFor="let c of choices" [value]="c.k">
+          {{ c.v }}
+        </emx-radio-option>
+      </emx-radio>
+    </form>
 
-    <router-outlet></router-outlet>
+    <pre>value: {{ example.value | json }}</pre>
+
+    <!-- <router-outlet></router-outlet> -->
   </section>
 </main>

@@ -10,5 +10,20 @@
   }
   main {
     padding: 0 0 0 0.5rem;
+    width: 100%;
+    section {
+      width: 100%;
+    }
+
+    form {
+      flex: 1;
+      display: flex;
+      justify-content: space-around;
+
+      > div {
+        align-items: stretch;
+        align-items: center;
+      }
+    }
   }
 }
